@@ -1,0 +1,115 @@
+/* autoprefixer grid: autoplace */
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  font-size: 10px;
+  font-weight: 500;
+  font-family: var(--hm-font-family);
+  background-color: var(--hm-background-color);
+  color: var(--hm-font-color);
+  line-height: 1.5;
+  letter-spacing: 0.06em;
+  min-height: 100vh;
+  position: relative;
+  transition: 0.2s ease;
+  transition-property: background-color, color;
+  //grid-template-areas: "head" "main" "foot";
+}
+
+html,
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+p {
+  font-size: 1.6rem;
+  line-height: 32px;
+  margin: 0;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h6 {
+  margin: 0;
+  color: var(--hm-font-color);
+  font-weight: 800;
+}
+
+a,
+button {
+  font-family: inherit;
+}
+
+button {
+  font-weight: 700;
+  font-family: var(--hm-font-family);
+  vertical-align: middle;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
+/**
+ * Responsive containers
+ */
+%responsive-container {
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 100%;
+}
+
+.container {
+  @extend %responsive-container;
+  max-width: 1450px;
+}
+
+.container-sm {
+  @extend %responsive-container;
+  max-width: 600px ;
+
+}
+
+.section {
+  padding: 5rem 0;
+}
+
+.logo {
+   font-weight: 700;
+   fill: var(--hm-font-color);
+   font-size: 3rem;
+}
+
+.figure-container {
+  fill: transparent;
+  stroke: var(--hm-font-color);
+  stroke-width: 4px;
+  stroke-linecap: round;
+}
+

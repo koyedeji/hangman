@@ -1,0 +1,27 @@
+.root {
+  padding: 1rem;
+}
+
+.spacer {
+  padding: 1.5rem 0;
+  display: flex;
+}
+
+.separator {
+   border-top:  #e8e8e8;
+}
+
+.heading {
+   font-size: 2rem;
+   padding: 1rem 0;
+}
+
+.btnWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mLeft {
+   margin: 0 0 0 auto;
+}

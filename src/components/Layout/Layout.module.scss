@@ -1,0 +1,17 @@
+.root {
+    min-height: 100vh;
+    display: grid;
+    grid-template-areas: "head" "main" "footer";
+    grid-template-columns: minmax(0px, 1fr);
+    grid-template-rows: auto minmax(0px, 1fr) auto;
+}
+
+
+.root main {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+}
+

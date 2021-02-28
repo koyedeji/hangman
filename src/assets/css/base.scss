@@ -1,0 +1,12 @@
+:root {
+  --hm-background-color: #FFFFFF;
+  --hm-font-family: "Turret Road", cursive;
+  --hm-font-color: #1B2D63;
+  --hm-button-background-color: #3454D1;
+  --hm-button-color: #FFFFFF;
+}
+
+[data-theme="dark"] {
+  --hm-background-color: #292f36;
+  --hm-font-color: #E8E8E8;
+}
