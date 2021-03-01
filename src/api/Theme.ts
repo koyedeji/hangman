@@ -14,7 +14,10 @@ const genRandomNum = (num = 1): number => {
 };
 
 class Theme {
-  private actors: ThemeProps[] = [{ word: "actors", tip: "c" }];
+  private actors: ThemeProps[] = [
+    { word: "actors", tip: "a" },
+    { word: "chris", tip: "darren" },
+  ];
   private movies: ThemeProps[] = [{ word: "movies", tip: "m" }];
   private mixed: ThemeProps[] = [];
 

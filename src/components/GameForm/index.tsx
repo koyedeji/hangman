@@ -1,7 +1,6 @@
 import React, { FC, FormEvent } from "react";
-
 import cn from "classnames";
-import Button from "components/Button";
+import { Button } from "components";
 import { useRadioOptions } from "hooks/useOptions";
 import s from "./GameForm.module.scss";
 

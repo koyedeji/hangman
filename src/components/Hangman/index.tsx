@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import cn from "classnames";
-import { GameForm, GameBoard } from "components";
-
 import { useHangman } from "hooks/useHangman";
-import Spinner from "components/Spinner";
+import { GameForm, GameBoard, Spinner } from "components";
 import s from "./hangman.module.scss";
 
 function Hangman() {
@@ -13,12 +11,14 @@ function Hangman() {
     setOptions,
     startGame,
     isPlaying,
+    setSelectedWord,
   } = useHangman();
 
   const isLoading = themes === null;
 
   const handleSubmit = (options: { mode?: string; theme?: string }): void => {
     setOptions(options);
+    setSelectedWord(options);
     startGame();
   };
 

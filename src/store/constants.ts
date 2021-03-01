@@ -3,8 +3,11 @@ const ActionConst = {
     GET_ALL: "THEMES_GET_ALL",
   },
   Game: {
-    START: "GAME_START",
-    SET_OPTIONS: "GAME_SET_OPTIONS",
+    START: "START",
+    SET_EASY_MODE: "SET_EASY_MODE",
+    SET_HARD_MODE: "SET_HARD_MODE",
+    SET_MEDIUM_MODE: "SET_MEDIUM_MODE",
+    SET_OPTIONS: "SET_OPTIONS",
   },
 };
 

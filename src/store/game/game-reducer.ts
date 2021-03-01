@@ -7,6 +7,11 @@ const DEFAULT_STATE: GameState = {
     mode: "",
     theme: "",
   },
+  selected: {
+    main: {},
+    word: [],
+    ui: [],
+  },
 };
 
 const gameReducer = (state: GameState = DEFAULT_STATE, action: GameActions) => {
@@ -21,6 +26,30 @@ const gameReducer = (state: GameState = DEFAULT_STATE, action: GameActions) => {
         ...state,
         options: {
           ...state.options,
+          ...action.payload,
+        },
+      };
+    case ActionConst.Game.SET_EASY_MODE:
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
+          ...action.payload,
+        },
+      };
+    case ActionConst.Game.SET_MEDIUM_MODE:
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
+          ...action.payload,
+        },
+      };
+    case ActionConst.Game.SET_HARD_MODE:
+      return {
+        ...state,
+        selected: {
+          ...state.selected,
           ...action.payload,
         },
       };
