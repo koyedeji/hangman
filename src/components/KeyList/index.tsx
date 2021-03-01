@@ -1,6 +1,6 @@
 import React, { SyntheticEvent, FC } from "react";
 import cn from "classnames";
-import Button from "../Button";
+import { Button } from "components";
 import s from "./keyList.module.scss";
 
 interface Props {

@@ -1,10 +1,15 @@
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { allThemesSelector, isPlayingSelector } from "store/selectors";
 import { themesAction, gameAction } from "store/actions";
+import { allThemesSelector, isPlayingSelector } from "store/selectors";
+
+const genRandom = (num: number) => {
+  return Math.floor(Math.random() * num);
+};
 
 interface UseHangman {
   setOptions(options: { mode?: string; theme?: string }): void;
+  setSelectedWord(options: { mode?: string; theme?: string }): void;
   getAllThemes(): void;
   startGame(): void;
   isPlaying: boolean;
@@ -22,6 +27,24 @@ export const useHangman = (): UseHangman => {
 
   const startGame = () => dispatch(gameAction.startGame());
 
+  const setSelectedWord = (options: { mode: string; theme: string }) => {
+    const selectedTheme = themes![options.theme];
+    const selected = selectedTheme[genRandom(selectedTheme.length)];
+    switch (options.mode) {
+      case "easy":
+        dispatch(gameAction.setEasyMode(selected));
+        return;
+      case "medium":
+        dispatch(gameAction.setMediumMode(selected));
+        return;
+      case "hard":
+        dispatch(gameAction.setHardMode(selected));
+        return;
+      default:
+        throw new Error(`Selected mode (${options.mode}) is not available`);
+    }
+  };
+
   const getAllThemes = useCallback(async () => {
     await dispatch(themesAction.getAllThemes());
   }, [dispatch]);
@@ -29,6 +52,7 @@ export const useHangman = (): UseHangman => {
   return {
     startGame,
     setOptions,
+    setSelectedWord,
     isPlaying,
     getAllThemes,
     themes,

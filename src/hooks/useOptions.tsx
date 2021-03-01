@@ -1,5 +1,5 @@
 import React, { ChangeEvent, useState } from "react";
-import RadioOptions from "components/RadioOptions";
+import { RadioOptions } from "components";
 
 interface UseOptions {
   name: string;
@@ -14,7 +14,6 @@ export const useRadioOptions = ({
   const [selectedOption, setSelected] = useState(initialValue);
 
   const handleSelected = (e: ChangeEvent<HTMLInputElement>): void => {
-    e.stopPropagation();
     if (e.currentTarget.checked) {
       setSelected(e.currentTarget.value);
     }

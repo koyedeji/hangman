@@ -6,13 +6,14 @@
   font-size: 2rem;
   color: var(--hm-font-color);
   align-items: center;
+  width: 100%;
+  padding: 1rem 0;
 
-  &:focus-within > .radioLabel  {
+  &:focus-within > .radioLabel {
     opacity:  1;
     transform: scale(1.05);
   }
 }
-
 
 .radio input:checked + .radioControl {
   background: radial-gradient(currentcolor 40%, rgba(255, 0, 0, 0) 51%);
@@ -37,14 +38,14 @@
 
 .radioControl {
   display: block;
-  height: 1.5em;
-  width: 1.5em;
+  height: 1.3em;
+  width: 1.3em;
   border: 1px solid currentColor;
   border-radius: 50%;
 }
 
 .spacer {
-   padding: 2rem 0;
+   margin: 1rem 0;
 }
 .separator {
   border-top:  #e8e8e8;

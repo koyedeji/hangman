@@ -13,7 +13,6 @@ export const getAllThemesAction = (payload: AvailableThemes) => ({
 export const getAllThemes = () => async (
   dispatch: Dispatch<GetTallThemesAction>
 ) => {
-  console.log("Hello");
   const themes = await ThemeAPI.getThemes();
   dispatch(getAllThemesAction(themes));
 };
