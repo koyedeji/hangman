@@ -1,18 +1,19 @@
 import React, { FC, FormEvent } from "react";
+
 import cn from "classnames";
 import Button from "components/Button";
 import { useRadioOptions } from "hooks/useOptions";
-import s from "./Form.module.scss";
+import s from "./GameForm.module.scss";
 
 interface Props {
-  className?: string;
   themeOptions: string[];
   modeOptions: string[];
+  className?: string;
   onSubmit?(...args: any[]): void;
 }
 
-const Form: FC<Props> = (props) => {
-  const { themeOptions, modeOptions, className } = props;
+const GameForm: FC<Props> = (props) => {
+  const { className, themeOptions, modeOptions, onSubmit } = props;
 
   const { Options: ThemeOption, selectedOption: theme } = useRadioOptions({
     name: "theme",
@@ -26,8 +27,11 @@ const Form: FC<Props> = (props) => {
     initialValue: "",
   });
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (onSubmit) {
+      onSubmit({ mode, theme });
+    }
   };
 
   const rootClassNames = cn(s.root, className);
@@ -61,4 +65,4 @@ const Form: FC<Props> = (props) => {
   );
 };
 
-export default Form;
+export default GameForm;

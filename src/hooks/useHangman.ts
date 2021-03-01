@@ -1,22 +1,36 @@
+import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { themesSelector } from "store/selectors";
-import { themesAction } from "store/actions";
+import { allThemesSelector, isPlayingSelector } from "store/selectors";
+import { themesAction, gameAction } from "store/actions";
 
 interface UseHangman {
-  getThemes(): Promise<void>;
+  setOptions(options: { mode?: string; theme?: string }): void;
+  getAllThemes(): void;
+  startGame(): void;
+  isPlaying: boolean;
   themes: Record<string, any> | null;
 }
 
 export const useHangman = (): UseHangman => {
-  const themes = useSelector(themesSelector);
   const dispatch = useDispatch();
+  const themes = useSelector(allThemesSelector);
+  const isPlaying = useSelector(isPlayingSelector);
 
-  const getThemes = async () => {
-    dispatch(themesAction.getThemes());
+  const setOptions = (options: { mode: string; theme: string }) => {
+    dispatch(gameAction.setOptions(options));
   };
 
+  const startGame = () => dispatch(gameAction.startGame());
+
+  const getAllThemes = useCallback(async () => {
+    await dispatch(themesAction.getAllThemes());
+  }, [dispatch]);
+
   return {
-    getThemes,
+    startGame,
+    setOptions,
+    isPlaying,
+    getAllThemes,
     themes,
   };
 };

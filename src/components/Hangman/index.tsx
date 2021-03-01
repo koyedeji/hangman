@@ -1,33 +1,54 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import cn from "classnames";
+import { GameForm, GameBoard } from "components";
+
 import { useHangman } from "hooks/useHangman";
-import GameOptions from "components/Form";
 import Spinner from "components/Spinner";
 import s from "./hangman.module.scss";
 
 function Hangman() {
-  const { themes, getThemes } = useHangman();
+  const {
+    themes,
+    getAllThemes,
+    setOptions,
+    startGame,
+    isPlaying,
+  } = useHangman();
 
-  const rootClassNames = cn("container-sm", s.root);
+  const isLoading = themes === null;
+
+  const handleSubmit = (options: { mode?: string; theme?: string }): void => {
+    setOptions(options);
+    startGame();
+  };
 
   useEffect(() => {
     (async () => {
-      await getThemes();
+      await getAllThemes();
     })();
-  }, []);
+  }, [getAllThemes]);
 
-  const isLoading = themes === null;
+  const rootClassNames = cn("container-sm", s.root);
+
+  if (isLoading) {
+    return (
+      <div className={rootClassNames}>
+        <Spinner className={s.spinner} spin={isLoading} />
+      </div>
+    );
+  }
 
   return (
     <section>
       <div className={cn(rootClassNames)}>
-        {isLoading ? (
-          <Spinner className={cn(s.spinner)} spin={isLoading} />
-        ) : (
-          <GameOptions
-            themeOptions={Object.keys(themes! || [])}
+        {!isPlaying ? (
+          <GameForm
+            onSubmit={handleSubmit}
+            themeOptions={Object.keys(themes! || {})}
             modeOptions={["easy", "medium", "hard"]}
           />
+        ) : (
+          <GameBoard />
         )}
       </div>
     </section>

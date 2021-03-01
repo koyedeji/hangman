@@ -1,8 +1,8 @@
-import { ActionConst } from "../constants";
-import { ThemesState, ThemesActionTypes } from "./types";
+import ActionConst from "../constants";
+import { ThemesActionTypes, ThemesState } from "./types";
 
 const DEFAULT_STATE: ThemesState = {
-  themes: null,
+  all: null,
 };
 
 const themeReducer = (
@@ -10,13 +10,13 @@ const themeReducer = (
   action: ThemesActionTypes
 ) => {
   switch (action.type) {
-    case ActionConst.themes.getThemes:
+    case ActionConst.Theme.GET_ALL:
       return {
         ...state,
-        themes: action.payload,
+        all: action.payload,
       };
     default:
-      return DEFAULT_STATE;
+      return state;
   }
 };
 

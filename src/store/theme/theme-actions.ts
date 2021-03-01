@@ -1,16 +1,19 @@
 import { Dispatch } from "redux";
 import Theme, { AvailableThemes } from "api";
-import { ActionConst } from "../constants";
-import { GetThemes } from "./types";
+import ActionConst from "../constants";
+import { GetTallThemesAction } from "./types";
 
 const ThemeAPI = new Theme();
 
-export const getThemesAction = (payload: AvailableThemes): GetThemes => ({
-  type: ActionConst.themes.getThemes,
+export const getAllThemesAction = (payload: AvailableThemes) => ({
+  type: ActionConst.Theme.GET_ALL,
   payload: payload,
 });
 
-export const getThemes = () => async (dispatch: Dispatch) => {
+export const getAllThemes = () => async (
+  dispatch: Dispatch<GetTallThemesAction>
+) => {
+  console.log("Hello");
   const themes = await ThemeAPI.getThemes();
-  dispatch(getThemesAction(themes));
+  dispatch(getAllThemesAction(themes));
 };

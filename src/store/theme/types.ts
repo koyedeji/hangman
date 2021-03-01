@@ -1,13 +1,13 @@
-import { ActionConst } from "../constants";
+import ActionConst from "../constants";
 import { AvailableThemes } from "api";
 
 export interface ThemesState {
-  themes: null | AvailableThemes;
+  all: Record<string, any> | null;
 }
 
-export interface GetThemes {
-  type: typeof ActionConst.themes.getThemes;
+export interface GetTallThemesAction {
+  type: typeof ActionConst.Theme.GET_ALL;
   payload: AvailableThemes;
 }
 
-export type ThemesActionTypes = GetThemes;
+export type ThemesActionTypes = GetTallThemesAction;

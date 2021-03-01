@@ -57,7 +57,7 @@ export const ThemeProvider: FC = ({ children }) => {
   );
 };
 
-export const useTheme = (): DefaultValue => {
+export const useUiTheme = (): DefaultValue => {
   const context = useContext(ThemeContext);
   if (!context) {
     throw new Error(`useTheme must be used within ThemeProvider`);
